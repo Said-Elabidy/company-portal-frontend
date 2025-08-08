@@ -1,0 +1,17 @@
+<header class="header">
+  <h1 class="logo">Company Portal</h1>
+  <nav class="nav-buttons">
+    <button *ngIf="!isLoggedIn" routerLink="/login" routerLinkActive="active">Login</button>
+    <button *ngIf="!isLoggedIn" routerLink="/register" routerLinkActive="active">Register</button>
+
+    <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+  </nav>
+</header>
+
+<main class="content">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="footer">
+  <p>© 2025 Company Portal. All rights reserved.</p>
+</footer>

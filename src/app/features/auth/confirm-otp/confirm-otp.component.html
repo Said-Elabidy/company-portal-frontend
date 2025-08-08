@@ -1,0 +1,34 @@
+<div class="otp-wrapper">
+  <div class="otp-card">
+    <h2>Confirm OTP</h2>
+
+    <p class="timer" [class.expired]="isExpired">
+      Time left: {{ formattedTime }}
+    </p>
+
+    <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+      <label for="otp">Enter the OTP sent to your email</label>
+      <input
+        id="otp"
+        type="text"
+        formControlName="otp"
+        placeholder="e.g. 123456"
+        [class.invalid]="otpForm.get('otp')?.invalid && otpForm.get('otp')?.touched"
+        [disabled]="isExpired"
+      />
+
+      <div class="error" *ngIf="otpForm.get('otp')?.invalid && otpForm.get('otp')?.touched">
+        <small *ngIf="otpForm.get('otp')?.errors?.['required']">OTP is required.</small>
+        <small *ngIf="otpForm.get('otp')?.errors?.['pattern']">OTP must be 4 to 6 digits.</small>
+      </div>
+
+      <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+      <div class="success" *ngIf="successMessage">{{ successMessage }}</div>
+      <div class="error" *ngIf="isExpired">OTP expired. Please request a new one.</div>
+
+      <button type="submit" [disabled]="otpForm.invalid || isExpired || isLoading">
+        {{ isLoading ? 'Verifying...' : 'Verify OTP' }}
+      </button>
+    </form>
+  </div>
+</div>

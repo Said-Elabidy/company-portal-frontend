@@ -16,13 +16,15 @@ export interface LoginResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://localhost:7106/api/Auth/login'; // عدلها لو مختلف
+  private baseUrl = 'https://localhost:7106/api/Auth'; // استخدم baseUrl واحد
 
   constructor(private http: HttpClient) {}
 
   login(data: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(this.apiUrl, data);
+    return this.http.post<LoginResponse>(`${this.baseUrl}/login`, data);
+  }
+
+  register(companyData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/RegisterCompany`, companyData);
   }
 }
-
-

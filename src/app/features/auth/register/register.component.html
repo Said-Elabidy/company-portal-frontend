@@ -1,0 +1,72 @@
+<div class="register-wrapper">
+  <mat-card class="register-card">
+    <mat-card-title class="register-title">New Company Registration</mat-card-title>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <!-- Arabic Name -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Name in Arabic</mat-label>
+        <input matInput formControlName="arabicName" required>
+        <mat-error *ngIf="registerForm.get('arabicName')?.hasError('required')">
+          Arabic name is required
+        </mat-error>
+        <mat-error *ngIf="registerForm.get('arabicName')?.hasError('maxlength')">
+          Arabic name can't exceed 100 characters
+        </mat-error>
+      </mat-form-field>
+
+      <!-- English Name -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Name in English</mat-label>
+        <input matInput formControlName="englishName" required>
+        <mat-error *ngIf="registerForm.get('englishName')?.hasError('required')">
+          English name is required
+        </mat-error>
+        <mat-error *ngIf="registerForm.get('englishName')?.hasError('maxlength')">
+          English name can't exceed 100 characters
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Email -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required>
+        <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="registerForm.get('email')?.hasError('email')">
+          Invalid email format
+        </mat-error>
+        <mat-error *ngIf="emailExists">
+          This email is already registered
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Phone Number -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phoneNumber" type="tel">
+        <mat-error *ngIf="registerForm.get('phoneNumber')?.hasError('pattern')">
+          Invalid phone number
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Website URL -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Website URL</mat-label>
+        <input matInput formControlName="websiteURL" type="url">
+        <mat-error *ngIf="registerForm.get('websiteURL')?.hasError('pattern')">
+          Invalid website URL
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Company Logo -->
+      <label class="upload-label">Company Logo</label>
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" class="form-field">
+
+      <button mat-raised-button color="primary" class="submit-button" type="submit">
+        Register Company
+      </button>
+    </form>
+  </mat-card>
+</div>

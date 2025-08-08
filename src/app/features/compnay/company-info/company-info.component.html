@@ -1,0 +1,17 @@
+<div class="company-card" *ngIf="companyInfo">
+  <div class="company-header">
+    <h2 class="welcome-message">Welcome,</h2>
+    <h2 class="company-name">{{ companyInfo.companyName }}</h2>
+  </div>
+
+  <img 
+    *ngIf="companyInfo?.logoUrl" 
+    class="company-logo" 
+    [src]="companyInfo.logoUrl" 
+    alt="Company Logo"
+  />
+</div>
+
+<div class="no-data" *ngIf="!companyInfo">
+  <p>Loading company information...</p>
+</div>
