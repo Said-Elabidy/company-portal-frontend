@@ -1,59 +1,48 @@
-# CompanyPortalFrontend
+# Company Portal Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+This is the frontend application for **Company Portal** built with **Angular 18**.
 
-## Development server
+---
 
-To start a local development server, run:
+## Features
 
-```bash
-ng serve
-```
+- **Company Registration Form** with inputs for:  
+  - Arabic and English company names (required)  
+  - Email (required, validated)  
+  - Phone number (optional, validated)  
+  - Website URL (optional)  
+  - Company logo upload with preview  
+- **OTP Verification Page** with countdown timer and validation  
+- **Create Password Page** with strong password validation rules:  
+  - Minimum 6 characters  
+  - At least one uppercase letter, special character, and number  
+- **Login Page** for user authentication  
+- **Company Info Page** displaying company name and logo after login  
+- **Navbar with conditional buttons**: shows Login/Register if logged out, Logout button if logged in  
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## Technologies
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Angular 18 (Standalone Components)  
+- Reactive Forms with validation  
+- Angular Router for navigation  
+- HttpClient for API communication  
+- CSS for styling and responsive layout  
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Running the App
 
-```bash
-ng generate --help
-```
+1. Make sure the backend API is running and accessible.  
+2. Run `npm install` to install dependencies.  
+3. Run `ng serve` to start the Angular development server.  
+4. Access the app at `http://localhost:4200`.  
 
-## Building
+---
 
-To build the project run:
+## Video Demo
 
-```bash
-ng build
-```
+A video walkthrough of the frontend features, including registration, OTP confirmation, password creation, and login, is available [here](https://drive.google.com/file/d/1jmXfLgYZNAGmie9VgIUvVxQXDySJzKHE/view?usp=sharing).  
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
