@@ -16,10 +16,10 @@ export class ConfirmOtpComponent implements OnInit, OnDestroy {
   errorMessage: string = '';
   successMessage: string = '';
   email: string = '';
-  countdown: number = 300; // 5 دقائق بالثواني
+  countdown: number = 300;  
   intervalId: any;
-  isExpired: boolean = false;
-  isLoading: boolean = false; // لتعطيل الزر أثناء طلب الـ API
+  isExpired: boolean = false; 
+  isLoading: boolean = false; 
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {}
 
@@ -28,8 +28,7 @@ export class ConfirmOtpComponent implements OnInit, OnDestroy {
 
     if (!this.email) {
       this.errorMessage = 'Email not found. Please start registration again.';
-      // تعطيل الفورم لو ما فيش إيميل
-      this.otpForm = this.fb.group({
+       this.otpForm = this.fb.group({
         otp: [{ value: '', disabled: true }, [Validators.required, Validators.pattern(/^[0-9]{4,6}$/)]],
       });
       return;
@@ -39,7 +38,7 @@ export class ConfirmOtpComponent implements OnInit, OnDestroy {
       otp: ['', [Validators.required, Validators.pattern(/^[0-9]{4,6}$/)]],
     });
 
-    // امسح رسالة الخطأ عند تغير قيمة الـ OTP
+
     this.otpForm.get('otp')?.valueChanges.subscribe(() => {
       this.errorMessage = '';
     });

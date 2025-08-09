@@ -40,7 +40,7 @@ export class CreatePasswordComponent implements OnInit {
   ngOnInit(): void {
     this.userId = localStorage.getItem('userId') || '';
 
-    // لو مفيش userId رجّع المستخدم للشاشة الأولى
+
     if (!this.userId) {
       this.router.navigate(['/register']);
       return;
@@ -61,7 +61,7 @@ export class CreatePasswordComponent implements OnInit {
     );
   }
 
-  // التحقق إن الباسوردين متطابقين
+
   passwordMatchValidator(form: FormGroup) {
     const pass = form.get('password')?.value;
     const confirm = form.get('confirmPassword')?.value;
@@ -85,7 +85,8 @@ export class CreatePasswordComponent implements OnInit {
         next: () => {
           this.successMessage = '✅ Password created successfully! Redirecting to login...';
           setTimeout(() => {
-            localStorage.removeItem('userId'); // تنظيف البيانات بعد النجاح
+            localStorage.removeItem('userId');
+
             this.router.navigate(['/login']);
           }, 3000);
         },
